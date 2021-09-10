@@ -51,3 +51,8 @@ class Message:
         response, data = await self._client._http.request(
             method="DELETE", endpoint=f"/rooms/{self.room.id}/messages/{self.id}"
         )
+    
+    async def reply(self, message: str):
+        """A shortcut to Message.room.send"""
+        
+        return await self.room.send(message)
